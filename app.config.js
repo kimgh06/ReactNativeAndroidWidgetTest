@@ -1,6 +1,3 @@
-import { ConfigContext, ExpoConfig } from 'expo/config';
-import { WithAndroidWidgetsParams } from 'react-native-android-widget';
-
 const widgetConfig = {
   // Paths to all custom fonts used in all widgets
   fonts: ['./assets/fonts/Inter.ttf'],
@@ -26,4 +23,5 @@ export default ({ config }) => ({
   ...config,
   name: 'My Expo App Name',
   plugins: [['react-native-android-widget', widgetConfig]],
+  owner: 'kimgh06'
 });

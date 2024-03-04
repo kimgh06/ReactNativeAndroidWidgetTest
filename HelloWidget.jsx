@@ -9,12 +9,12 @@ export function HelloWidget() {
         width: 'match_parent',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ddd',
+        backgroundColor: '#ffffff',
         borderRadius: 16,
       }}
     >
       <TextWidget
-        text="잘 됨"
+        text="Hello"
         style={{
           fontSize: 32,
           fontFamily: 'Inter',
