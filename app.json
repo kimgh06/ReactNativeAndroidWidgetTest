@@ -18,6 +18,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.kimgh06.tutorial",
+      "versionCode": "1",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -26,9 +28,17 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      [
+        "expo-dev-launcher",
+        {
+          "launchModeExperimental": "most-recent"
+        }
+      ]
+    ],
     "extra": {
       "eas": {
-        "projectId": "b7e5f261-f8b3-4049-8e53-51d914b80c96"
+        "projectId": "f35af23d-aa75-47d1-bd9e-7a28d33c783e"
       }
     }
   }

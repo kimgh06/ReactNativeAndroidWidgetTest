@@ -1,6 +1,6 @@
 const widgetConfig = {
   // Paths to all custom fonts used in all widgets
-  fonts: ['./assets/fonts/Inter.ttf'],
+  // fonts: ['./assets/fonts/Inter.ttf'],
   widgets: [
     {
       name: 'Hello', // This name will be the **name** with which we will reference our widget.
@@ -23,5 +23,4 @@ export default ({ config }) => ({
   ...config,
   name: 'My Expo App Name',
   plugins: [['react-native-android-widget', widgetConfig]],
-  owner: 'kimgh06'
 });

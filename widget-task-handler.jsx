@@ -8,8 +8,7 @@ const nameToWidget = {
 
 export async function widgetTaskHandler(props) {
   const widgetInfo = props.widgetInfo;
-  const Widget =
-    nameToWidget[widgetInfo.widgetName];
+  const Widget = nameToWidget[widgetInfo.widgetName];
 
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
