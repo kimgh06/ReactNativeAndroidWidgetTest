@@ -21,7 +21,7 @@ export async function widgetTaskHandler(props) {
       break;
 
     case 'WIDGET_RESIZED':
-      // Not needed for now
+      props.renderWidget(<Widget text={text} />);
       break;
 
     case 'WIDGET_DELETED':
@@ -30,6 +30,9 @@ export async function widgetTaskHandler(props) {
 
     case 'WIDGET_CLICK':
       // Not needed for now
+      if (props.clickAction === 'touch') {
+        console.log("OPEN_APP")
+      }
       break;
 
     default:

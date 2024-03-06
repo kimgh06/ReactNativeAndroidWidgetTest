@@ -4,6 +4,7 @@ import { FlexWidget, TextWidget } from 'react-native-android-widget';
 export function HelloWidget({ text }) {
   return (
     <FlexWidget
+      clickAction='OPEN_APP'
       style={{
         height: 'match_parent',
         width: 'match_parent',
