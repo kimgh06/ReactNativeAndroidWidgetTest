@@ -1,5 +1,6 @@
 import React from 'react';
 import { HelloWidget } from './HelloWidget';
+import useStore from './store';
 
 const nameToWidget = {
   // Hello will be the **name** with which we will reference our widget.
@@ -9,7 +10,7 @@ const nameToWidget = {
 export async function widgetTaskHandler(props) {
   const widgetInfo = props.widgetInfo;
   const Widget = nameToWidget[widgetInfo.widgetName];
-  const text = await getData();
+  const { text } = useStore(s => s);
 
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
@@ -39,13 +40,3 @@ export async function widgetTaskHandler(props) {
       break;
   }
 }
-
-const getData = async () => {
-  try {
-    const value = await AsyncStorage.getItem('text');
-    console.log('from', value)
-    return value ? value : ''
-  } catch (e) {
-    // error reading value
-  }
-};

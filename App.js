@@ -8,15 +8,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import useStore from './store';
 
 export default function App() {
-  const [text, setText] = useState('')
-  const setZusText = useStore(s => s.setText);
+  const { text, setText } = useStore(s => s)
+  const { setAsyncItem, getAsyncItem } = useStore(s => s)
   const fun = async e => {
-    await AsyncStorage.setItem('text', text);
-    const value = await AsyncStorage.getItem('text');
-    setZusText(text)
+    setAsyncItem('text', text);
+    const value = await getAsyncItem('text');
+    if (value === null) {
+      return;
+    }
     await requestWidgetUpdate({
       widgetName: 'Hello',
-      renderWidget: e => <HelloWidget text={value} />,
+      renderWidget: e => <HelloWidget text={text} />,
       widgetNotFound: e => {
         console.log('not found')
       }

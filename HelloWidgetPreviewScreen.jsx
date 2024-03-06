@@ -6,14 +6,14 @@ import { HelloWidget } from './HelloWidget';
 import useStore from './store';
 
 export function HelloWidgetPreviewScreen() {
-  const { text, setText } = useStore(s => s)
-  async function getData() {
-    const value = await AsyncStorage.getItem('text');
-    console.log(value)
+  const { text, setText, getAsyncItem } = useStore(s => s)
+
+  const getData = async e => {
+    const value = await getAsyncItem('text');
+    console.log('getdata', value)
     setText(value)
   }
   useEffect(e => {
-    console.log(text === '', text.length)
     if (text === '') {
       getData();
     }
