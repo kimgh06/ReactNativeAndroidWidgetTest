@@ -41,5 +41,16 @@
         "projectId": "f35af23d-aa75-47d1-bd9e-7a28d33c783e"
       }
     }
-  }
+  },
+  "widgets": [
+    {
+      "name": "Hello",
+      "label": "My Hello Widget",
+      "minWidth": "320dp",
+      "minHeight": "120dp",
+      "description": "This is my first widget",
+      "previewImage": "./assets/widget-preview/hello.png",
+      "updatePeriodMillis": 1800000
+    }
+  ]
 }

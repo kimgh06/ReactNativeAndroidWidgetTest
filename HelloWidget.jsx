@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
-export function HelloWidget() {
+export function HelloWidget({ text }) {
   return (
     <FlexWidget
       style={{
@@ -14,7 +14,7 @@ export function HelloWidget() {
       }}
     >
       <TextWidget
-        text="fuckyou"
+        text={text}
         style={{
           fontSize: 32,
           fontFamily: 'Inter',

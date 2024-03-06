@@ -9,14 +9,15 @@ const nameToWidget = {
 export async function widgetTaskHandler(props) {
   const widgetInfo = props.widgetInfo;
   const Widget = nameToWidget[widgetInfo.widgetName];
+  const text = await getData();
 
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
-      props.renderWidget(<Widget />);
+      props.renderWidget(<Widget text={text} />);
       break;
 
     case 'WIDGET_UPDATE':
-      // Not needed for now
+      props.renderWidget(<Widget text={text} />);
       break;
 
     case 'WIDGET_RESIZED':
@@ -35,3 +36,13 @@ export async function widgetTaskHandler(props) {
       break;
   }
 }
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('text');
+    console.log('from', value)
+    return value ? value : ''
+  } catch (e) {
+    // error reading value
+  }
+};
