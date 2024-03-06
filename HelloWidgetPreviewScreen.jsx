@@ -22,8 +22,8 @@ export function HelloWidgetPreviewScreen() {
     <View style={styles.container}>
       <WidgetPreview
         renderWidget={() => <HelloWidget text={text} />}
-        width={320}
-        height={200}
+        width={160}
+        height={100}
       />
     </View>
   );

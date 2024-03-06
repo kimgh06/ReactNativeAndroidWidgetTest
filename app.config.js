@@ -4,8 +4,8 @@ const widgetConfig = {
     {
       name: 'Hello', // This name will be the **name** with which we will reference our widget.
       label: 'My Hello Widget', // Label shown in the widget picker
-      minWidth: '320dp',
-      minHeight: '120dp',
+      minWidth: '160dp',
+      minHeight: '60dp',
       description: 'This is my first widget', // Description shown in the widget picker
       previewImage: './assets/widget-preview/hello.png', // Path to widget preview image
 

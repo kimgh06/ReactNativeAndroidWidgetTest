@@ -4,24 +4,31 @@ import { FlexWidget, TextWidget } from 'react-native-android-widget';
 export function HelloWidget({ text }) {
   return (
     <FlexWidget
-      clickAction='OPEN_APP'
       style={{
-        height: 'match_parent',
-        width: 'match_parent',
-        justifyContent: 'center',
+        flex: 1,
         alignItems: 'center',
-        backgroundColor: '#ffffff',
-        borderRadius: 16,
-      }}
-    >
-      <TextWidget
-        text={text}
+        justifyContent: 'center',
+      }}>
+      <FlexWidget
+        clickAction='OPEN_APP'
         style={{
-          fontSize: 32,
-          fontFamily: 'Inter',
-          color: '#000000',
+          height: 160,
+          width: 100,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#ddd',
+          borderRadius: 16,
         }}
-      />
+      >
+        <TextWidget
+          text={text}
+          style={{
+            fontSize: 20,
+            fontFamily: 'Inter',
+            color: '#000000',
+          }}
+        />
+      </FlexWidget>
     </FlexWidget>
   );
 }
