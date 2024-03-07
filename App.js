@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { HelloWidgetPreviewScreen } from './HelloWidgetPreviewScreen';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { requestWidgetUpdate } from 'react-native-android-widget';
 import { HelloWidget } from './HelloWidget';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import useStore from './store';
 
 export default function App() {
-  const { text, setText } = useStore(s => s)
+  const { text, setText, bob } = useStore(s => s)
   const { setAsyncItem, getAsyncItem } = useStore(s => s)
   const fun = async e => {
     setAsyncItem('text', text);
@@ -18,7 +17,7 @@ export default function App() {
     }
     await requestWidgetUpdate({
       widgetName: 'Hello',
-      renderWidget: e => <HelloWidget text={text} />,
+      renderWidget: e => <HelloWidget text={bob} />,
       widgetNotFound: e => {
         console.log('not found')
       }
@@ -26,7 +25,7 @@ export default function App() {
   }
   useEffect(e => {
     fun();
-  }, [text])
+  }, [bob])
   return (
     <>
       <View style={{ height: 500 }}>

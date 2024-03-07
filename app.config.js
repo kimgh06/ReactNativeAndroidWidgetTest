@@ -3,10 +3,10 @@ const widgetConfig = {
   widgets: [
     {
       name: 'Hello', // This name will be the **name** with which we will reference our widget.
-      label: 'My Hello Widget', // Label shown in the widget picker
+      label: 'GSMBoB', // Label shown in the widget picker
       minWidth: '200dp',
       minHeight: '80dp',
-      description: 'This is my first widget', // Description shown in the widget picker
+      description: '광주소마고 밥 위젯', // Description shown in the widget picker
       previewImage: './assets/widget-preview/hello.png', // Path to widget preview image
       resizeMode: "horizontal|vertical",
 

@@ -10,19 +10,26 @@ const nameToWidget = {
 export async function widgetTaskHandler(props) {
   const widgetInfo = props.widgetInfo;
   const Widget = nameToWidget[widgetInfo.widgetName];
-  const { text } = useStore(s => s);
+  const { bob } = useStore(s => s);
 
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
-      props.renderWidget(<Widget text={text} />);
+      props.renderWidget(<Widget text={bob} />);
       break;
 
     case 'WIDGET_UPDATE':
-      props.renderWidget(<Widget text={text} />);
+      props.renderWidget(<Widget text={bob} />);
       break;
 
     case 'WIDGET_RESIZED':
-      props.renderWidget(<Widget text={text} />);
+      console.log('resized')
+      await requestWidgetUpdate({
+        widgetName: 'Hello',
+        renderWidget: e => <HelloWidget text={bob} />,
+        widgetNotFound: e => {
+          console.log('not found')
+        }
+      })
       break;
 
     case 'WIDGET_DELETED':
