@@ -5,19 +5,24 @@ import { WidgetPreview, requestWidgetUpdate } from 'react-native-android-widget'
 import { HelloWidget } from './HelloWidget';
 import useStore from './store';
 import { GetBob } from './getBob';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function HelloWidgetPreviewScreen() {
-  const { text, setBob, bobNum, setBobNum, setText, getAsyncItem, bob } = useStore(s => s)
+  const { text, setBob, bobNum, setBobNum, bob } = useStore(s => s)
 
   const getData = async e => {
     try {
-      const newBob = await GetBob();
+      const newBob = await GetBob(20240322);
+      if (newBob === null) {
+        console.log(null)
+        return;
+      }
       setBobNum(0);
-      let imbob = JSON.stringify(newBob[0]?.DDISH_NM.replace(/<br\s*\/>/g, '\n'))
+      let imbob = newBob[0]?.DDISH_NM.replace(/<br\s*\/>/g, '\n').replace(/\([^)]*\)/g, '')
+      await AsyncStorage.setItem('bob', imbob)
       setBob(imbob);
-      const value = await getAsyncItem('text');
-      console.log('getdata', imbob);
-      setText(value);
+
+      console.log('getdata', newBob[0]?.DDISH_NM.replace(/<br\s*\/>/g, '\n').replace(/\([^)]*\)/g, ''));
 
       await requestWidgetUpdate({
         widgetName: 'Hello',

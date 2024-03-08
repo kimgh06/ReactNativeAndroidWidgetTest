@@ -1,6 +1,7 @@
 import React from 'react';
 import { HelloWidget } from './HelloWidget';
 import useStore from './store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const nameToWidget = {
   // Hello will be the **name** with which we will reference our widget.
@@ -10,10 +11,11 @@ const nameToWidget = {
 export async function widgetTaskHandler(props) {
   const widgetInfo = props.widgetInfo;
   const Widget = nameToWidget[widgetInfo.widgetName];
-  const { bob } = useStore(s => s);
 
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
+      // const { getAsyncItem } = useStore(s => s);
+      // const bob = await getAsyncItem('bob');
       props.renderWidget(<Widget text={bob} />);
       break;
 
@@ -22,14 +24,8 @@ export async function widgetTaskHandler(props) {
       break;
 
     case 'WIDGET_RESIZED':
-      console.log('resized')
-      await requestWidgetUpdate({
-        widgetName: 'Hello',
-        renderWidget: e => <HelloWidget text={bob} />,
-        widgetNotFound: e => {
-          console.log('not found')
-        }
-      })
+      const bob = await AsyncStorage.getItem('bob');
+      props.renderWidget(<Widget text={bob} />);
       break;
 
     case 'WIDGET_DELETED':

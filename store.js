@@ -8,13 +8,7 @@ const useStore = create((set) => ({
 
   setText: (t) => set({ text: t }),
   setBob: t => set({ bob: t }),
-  setBobNum: t => set({ bobnum: t }),
-  getAsyncItem: async (key) => {
-    const value = await AsyncStorage.getItem(key);
-    return value
-  },
-  setAsyncItem: async (key, data) => { await AsyncStorage.setItem(key, data) },
-  delAsyncItem: async (key) => { await AsyncStorage.removeItem(key) }
+  setBobNum: t => set({ bobnum: t })
 }));
 
 export default useStore;

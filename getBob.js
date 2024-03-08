@@ -1,5 +1,4 @@
 import axios from "axios";
-import useStore from "./store";
 
 export const GetBob = async date => {
   const day = new Date();
@@ -9,5 +8,6 @@ export const GetBob = async date => {
       return e.data['mealServiceDietInfo'][1]['row']
     }).catch(e => {
       console.log(e)
+      return null;
     });
 }
