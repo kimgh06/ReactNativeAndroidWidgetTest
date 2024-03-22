@@ -4,8 +4,8 @@ const widgetConfig = {
     {
       name: 'Hello', // This name will be the **name** with which we will reference our widget.
       label: 'GSMBoB', // Label shown in the widget picker
-      minWidth: '80dp',
-      minHeight: '100dp',
+      minWidth: '100dp',
+      minHeight: '80dp',
       description: '광주소마고 밥 위젯', // Description shown in the widget picker
       previewImage: './assets/widget-preview/hello.png', // Path to widget preview image
       resizeMode: "horizontal|vertical",
@@ -21,6 +21,6 @@ const widgetConfig = {
 
 export default ({ config }) => ({
   ...config,
-  name: 'My Expo App Name',
+  name: '광주소마고 오늘 밥 위젯',
   plugins: [['react-native-android-widget', widgetConfig]],
 });

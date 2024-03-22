@@ -7,7 +7,7 @@ export const GetBob = async date => {
     .then(e => {
       return e.data['mealServiceDietInfo'][1]['row']
     }).catch(e => {
-      console.log(e)
+      // console.log('err', e)
       return null;
     });
 }

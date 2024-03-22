@@ -13,16 +13,26 @@ export function HelloWidgetPreviewScreen() {
   const getData = async e => {
     try {
       const newBob = await GetBob(20240322);
+      let bn = 1;
       if (newBob === null) {
-        console.log(null)
-        return;
+        await requestWidgetUpdate({
+          widgetName: 'Hello',
+          renderWidget: e => <HelloWidget text={'밥이 없습니다.'} />,
+          widgetNotFound: e => {
+            console.log('not found')
+          }
+        })
+        await AsyncStorage.setItem('bob', '밥이 없습니다.')
+        setBob('밥이 없습니다.')
+        throw "can't get bob";
       }
-      setBobNum(0);
-      let imbob = newBob[0]?.DDISH_NM.replace(/<br\s*\/>/g, '\n').replace(/\([^)]*\)/g, '')
+
+      setBobNum(bn);
+      let imbob = newBob[bn]?.DDISH_NM?.replace(/<br\s*\/>/g, '\n')?.replace(/\([^)]*\)/g, '')
       await AsyncStorage.setItem('bob', imbob)
       setBob(imbob);
 
-      console.log('getdata', newBob[0]?.DDISH_NM.replace(/<br\s*\/>/g, '\n').replace(/\([^)]*\)/g, ''));
+      console.log('getdata', imbob);
 
       await requestWidgetUpdate({
         widgetName: 'Hello',
