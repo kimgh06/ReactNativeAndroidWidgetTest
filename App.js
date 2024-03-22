@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { HelloWidgetPreviewScreen } from './HelloWidgetPreviewScreen';
 import { useEffect } from 'react';
 import { requestWidgetUpdate } from 'react-native-android-widget';
@@ -7,14 +7,12 @@ import { HelloWidget } from './HelloWidget';
 import useStore from './store';
 
 export default function App() {
-  const { text, setText, bob } = useStore(s => s)
-  const { setAsyncItem, getAsyncItem } = useStore(s => s)
+  const { bob, setBobNum, setBob } = useStore(s => s)
   const fun = async e => {
-    setAsyncItem('text', text);
-    const value = await getAsyncItem('text');
-    if (value === null) {
-      return;
+    if (bob === undefined) {
+      setBob('밥이 없어요.');
     }
+    await AsyncStorage.setItem('bob', bob);
     await requestWidgetUpdate({
       widgetName: 'Hello',
       renderWidget: e => <HelloWidget text={bob} />,
@@ -30,7 +28,20 @@ export default function App() {
     <>
       <View style={{ height: 500 }}>
         <HelloWidgetPreviewScreen />
-        <TextInput value={text} onChange={e => setText(e.nativeEvent.text)} style={{ borderColor: 'black', borderWidth: 1 }} />
+        <View>
+          <Button
+            title='아침'
+            onPress={e => setBobNum(0)}
+          />
+          <Button
+            title='점심'
+            onPress={e => setBobNum(1)}
+          />
+          <Button
+            title='저녁'
+            onPress={e => setBobNum(2)}
+          />
+        </View>
       </View>
     </>
   );
