@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "com.kimgh06.tutorial",
-      "versionCode": "1",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

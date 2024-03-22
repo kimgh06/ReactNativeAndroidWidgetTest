@@ -4,7 +4,7 @@ const widgetConfig = {
     {
       name: 'Hello', // This name will be the **name** with which we will reference our widget.
       label: 'GSMBoB', // Label shown in the widget picker
-      minWidth: '160dp',
+      minWidth: '80dp',
       minHeight: '100dp',
       description: '광주소마고 밥 위젯', // Description shown in the widget picker
       previewImage: './assets/widget-preview/hello.png', // Path to widget preview image
