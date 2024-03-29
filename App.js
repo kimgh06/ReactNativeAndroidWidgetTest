@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { requestWidgetUpdate } from 'react-native-android-widget';
 import { HelloWidget } from './HelloWidget';
 import useStore from './store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const { bob, setBobNum, setBob } = useStore(s => s)
@@ -12,7 +13,7 @@ export default function App() {
     if (bob === undefined) {
       setBob('밥이 없어요.');
     }
-    await AsyncStorage.setItem('bob', bob);
+    console.log(bob)
     await requestWidgetUpdate({
       widgetName: 'Hello',
       renderWidget: e => <HelloWidget text={bob} />,
@@ -20,6 +21,7 @@ export default function App() {
         console.log('not found')
       }
     })
+    await AsyncStorage.setItem('bob', bob);
   }
   useEffect(e => {
     fun();
@@ -28,6 +30,7 @@ export default function App() {
     <>
       <View style={{ height: 500 }}>
         <HelloWidgetPreviewScreen />
+        <Text style={{ fontSize: 20 }} >예시</Text>
         <View>
           <Button
             title='아침'

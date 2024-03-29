@@ -20,6 +20,7 @@ export async function widgetTaskHandler(props) {
       break;
 
     case 'WIDGET_UPDATE':
+      // const bob = await AsyncStorage.getItem('bob');
       props.renderWidget(<Widget text={bob} />);
       break;
 
